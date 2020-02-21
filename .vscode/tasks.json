@@ -1,26 +1,31 @@
 {
     "version": "2.0.0",
-    "command": "g++.exe build",
-    "args": [
-        "-g",
-        "-std=c++11",
-        "*.cpp",
-        "-o",
-        "${workspaceRoot}\\main.exe"
-    ],
-    "problemMatcher": {
-        "owner": "cpp",
-        "fileLocation": [
-            "relative",
-            "${workspaceRoot}"
-        ],
-        "pattern": {
-            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-            "file": 1,
-            "line": 2,
-            "column": 3,
-            "severity": 4,
-            "message": 5
+    "tasks": [
+        {
+            "label": "g++ build",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++11",
+                "*.cpp",
+                "-o",
+                "${workspaceRoot}\\bin\\main.exe"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
         }
-    }
+    ],
 }

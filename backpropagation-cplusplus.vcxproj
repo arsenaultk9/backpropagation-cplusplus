@@ -148,10 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CsvReader.cpp" />
+    <ClCompile Include="DataPreparator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CsvReader.h" />
+    <ClInclude Include="DataPreparator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

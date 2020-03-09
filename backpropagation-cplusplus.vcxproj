@@ -150,10 +150,12 @@
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="DataPreparator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Preprocessor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="DataPreparator.h" />
+    <ClInclude Include="Preprocessor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

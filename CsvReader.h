@@ -14,7 +14,7 @@ class CsvReader
 
 public:
     CsvReader(std::string filename, std::string delm = ",");
-    std::vector<std::vector<std::string>> getData();
+    std::vector<std::vector<float>> getData();
 };
 
 #endif

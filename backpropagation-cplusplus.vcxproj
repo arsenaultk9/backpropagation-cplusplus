@@ -151,11 +151,13 @@
     <ClCompile Include="DataPreparator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Preprocessor.cpp" />
+    <ClCompile Include="RandomMatrixGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="DataPreparator.h" />
     <ClInclude Include="Preprocessor.h" />
+    <ClInclude Include="RandomMatrixGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

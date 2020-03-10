@@ -150,12 +150,16 @@
     <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="DataPreparator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="MatrixOperator.cpp" />
     <ClCompile Include="Preprocessor.cpp" />
     <ClCompile Include="RandomMatrixGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CsvReader.h" />
     <ClInclude Include="DataPreparator.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="MatrixOperator.h" />
     <ClInclude Include="Preprocessor.h" />
     <ClInclude Include="RandomMatrixGenerator.h" />
   </ItemGroup>

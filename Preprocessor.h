@@ -10,5 +10,6 @@ class Preprocessor
 public:
 	vector<vector<float>> scale(vector<vector<float>> xValues);
 	vector<vector<float>> addBias(vector<vector<float>> xValues);
+	vector<float> addBias(vector<float> xValues);
 };
 

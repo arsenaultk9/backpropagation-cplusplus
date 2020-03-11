@@ -17,11 +17,11 @@ int main()
 	std::vector<std::vector<float>> dataSet = reader.getData();
 
 	DataPreparator preparator;
-	vector<vector<float>> xValue = preparator.getXData(dataSet, 8);
-	vector<float> yVale = preparator.getYData(dataSet, 8);
+	vector<vector<float>> xValues = preparator.getXData(dataSet, 8);
+	vector<float> yValues = preparator.getYData(dataSet, 8);
 
 	Preprocessor preprocessor;
-	vector<vector<float>> xValuesScaled = preprocessor.scale(xValue);
+	vector<vector<float>> xValuesScaled = preprocessor.scale(xValues);
 
 	RandomMatrixGenerator randomMatrixGenerator;
 
@@ -32,12 +32,21 @@ int main()
 
 	MatrixOperator matrixOperator;
 
-	vector<float> (*activationFunctionPtr)(vector<float>) { MathUtils::sigmoidVector }; // fcnPtr points to function foo
+	vector<float> (*activationFunctionPtr)(vector<float>) { MathUtils::sigmoidVector };
 
 	for (unsigned int iteration = 0; iteration < 9000; iteration++) {
-		for (vector<float> currentX : xValuesTraining) {
+		for (unsigned int dataIndex = 0; dataIndex < xValuesTraining.size(); dataIndex++) {
+			vector<float> currentX = xValuesTraining[dataIndex];
 			vector<float> productW1 = matrixOperator.dotProduct(currentX, w1);
+			
 			vector<float> activationW1 = activationFunctionPtr(productW1);
+			activationW1 = preprocessor.addBias(activationW1);
+
+			vector<float> productW2 = matrixOperator.dotProduct(activationW1, w2);
+			vector<float> activationW2 = activationFunctionPtr(productW2);
+
+			float yHat = activationW2[0];
+			float y = yValues[dataIndex];
 		}
 
 		if (iteration % 100 == 0) {

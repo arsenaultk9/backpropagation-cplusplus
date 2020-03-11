@@ -51,6 +51,19 @@ vector<vector<float>> Preprocessor::scale(vector<vector<float>> xValues)
 	return valuesScaled;
 }
 
+vector<float> Preprocessor::addBias(vector<float> xValues)
+{
+	vector<float> valuesWithBias(xValues.size() + 1);
+
+	for (unsigned int columnIndex = 0; columnIndex < xValues.size(); columnIndex++) {
+		valuesWithBias[columnIndex] = xValues[columnIndex];
+	}
+
+	valuesWithBias[xValues.size()] = 1;
+
+	return valuesWithBias;
+}
+
 vector<vector<float>> Preprocessor::addBias(vector<vector<float>> xValues)
 {
 	vector<vector<float>> valuesWithBias(xValues.size());
@@ -58,14 +71,7 @@ vector<vector<float>> Preprocessor::addBias(vector<vector<float>> xValues)
 	for (unsigned int rowIndex = 0; rowIndex < xValues.size(); rowIndex++)
 	{
 		vector<float> row = xValues[rowIndex];
-		vector<float> rowWithBias(row.size() + 1);
-
-		for (unsigned int columnIndex = 0; columnIndex < row.size(); columnIndex++) {
-			rowWithBias[columnIndex] = row[columnIndex];
-		}
-
-		rowWithBias[row.size()] = 1;
-		valuesWithBias[rowIndex] = rowWithBias;
+		valuesWithBias[rowIndex] = Preprocessor::addBias(row);
 	}
 
 	return valuesWithBias;

@@ -16,3 +16,14 @@ vector<float> MatrixOperator::dotProduct(vector<float> fromVector, vector<vector
 
 	return dotProduct;
 }
+
+vector<float> MatrixOperator::scalarMultiplication(vector<float> fromVector, float scalar)
+{
+	vector<float> multiplicated(fromVector.size());
+
+	for (unsigned int index = 0; index < fromVector.size(); index++) {
+		multiplicated[index] = fromVector[index] * scalar;
+	}
+
+	return multiplicated;
+}

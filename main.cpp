@@ -32,9 +32,14 @@ int main()
 
 	MatrixOperator matrixOperator;
 
-	vector<float> (*activationFunctionPtr)(vector<float>) { MathUtils::sigmoidVector };
+	vector<float>(*activationFunctionPtr)(vector<float>) { MathUtils::sigmoid };
+	float (*costFunctionPtr)(float, float) { MathUtils::meanSquaredCost };
+	float (*costDerivativeFunctionPtr)(float, float) { MathUtils::meanSquaredCostDerivative };
 
 	for (unsigned int iteration = 0; iteration < 9000; iteration++) {
+		vector<float> yHats;
+		float cost = 0;
+
 		for (unsigned int dataIndex = 0; dataIndex < xValuesTraining.size(); dataIndex++) {
 			vector<float> currentX = xValuesTraining[dataIndex];
 			vector<float> productW1 = matrixOperator.dotProduct(currentX, w1);
@@ -46,11 +51,18 @@ int main()
 			vector<float> activationW2 = activationFunctionPtr(productW2);
 
 			float yHat = activationW2[0];
+			yHats.push_back(yHat);
+
 			float y = yValues[dataIndex];
+			cost = costFunctionPtr(y, yHat) / xValuesTraining.size();
+
+			float yHatDerivative = costDerivativeFunctionPtr(y, yHat);
+			vector<float> w2ActivationDerivative = matrixOperator.scalarMultiplication(MathUtils::sigmoidDerivative(productW2), yHatDerivative);
 		}
 
 		if (iteration % 100 == 0) {
-			cout << iteration << endl;
+			cout << "iteration: " << iteration << endl;
+			cout << "cost: " << cost << endl;
 		}
 	}
 }
